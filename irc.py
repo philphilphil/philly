@@ -129,8 +129,6 @@ class Bot(asynchat.async_chat):
 
 
     def __write(self, args, text=None, raw=False):
-        print(self, args, text)
-        #return
         try:
             if raw:
                 temp = ' '.join(args)[:510] + " :" + text + '\r\n'
