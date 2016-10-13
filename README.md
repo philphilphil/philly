@@ -5,6 +5,7 @@ Philly is a fork of jenni which is a fork of phenny. Since the development for b
 
 Todo:
 - Clean up not working or unwanted modules
+- remove proxy class
 
 Done:
 - Move codebase to Python 3
