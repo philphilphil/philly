@@ -1,5 +1,4 @@
 *.pyc
-*.txt
 uno_test.py
 .*.sw*
 osu_osc.py
