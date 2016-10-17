@@ -18,7 +18,7 @@ def chat(phenny, input):
         return
 
     if not CLIENT_ACCESS_TOKEN:
-        return phenny.say('pleae set the client access token first to use this feature.')
+        return phenny.say('Please set the client access token first to use this feature.')
 
     ai = apiai.ApiAI(CLIENT_ACCESS_TOKEN)
     request = ai.text_request()
