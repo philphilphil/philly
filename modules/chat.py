@@ -17,7 +17,7 @@ def chat(phenny, input):
             return
 
     if not CLIENT_ACCESS_TOKEN:
-        return phenny.say('Please set the client access token first to use this feature.')
+        return
 
     if text.startswith('.'):
         return
