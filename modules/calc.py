@@ -8,6 +8,6 @@ def c(phenny, input):
         result = req.read().decode('utf-8').strip()
         return phenny.say(result)
     except urllib.error.HTTPError as error:
-        return phenny.say(error.code)
+        return phenny.say("Error")
 
 c.commands = ['c', 'calc']
