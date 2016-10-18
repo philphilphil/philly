@@ -101,7 +101,7 @@ def create_default_config(fn):
         'token_secret': ''
         }
 
-
+    # apiai_apikey = ''
 
     # You can add bannable words / regex per channel
     # bad_words = {
