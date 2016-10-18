@@ -1,4 +1,5 @@
 requests
+wolframalpha
 numpy
 scipy
 networkx
