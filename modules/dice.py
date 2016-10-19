@@ -6,6 +6,11 @@ def dice(phenny, input):
     if not input.group(2):
         return phenny.say(str(random.randint(1,6)))
 
+    try:
+        int(input.group(2))
+    except ValueError:
+        return phenny.say('Denied.')
+
     if int(input.group(2)) > 10:
         return phenny.say('Denied.')
 
