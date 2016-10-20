@@ -103,6 +103,9 @@ def create_default_config(fn):
 
     # apiai_apikey = ''
 
+    # cse_apikey = ''
+    # cse_appid = ''
+
     # You can add bannable words / regex per channel
     # bad_words = {
     #   "#yourchan": ['badword', '(a|b).*c.*(d|e)']
