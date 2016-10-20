@@ -25,7 +25,7 @@ def gcse(phenny, input):
     request = requests.get('https://www.googleapis.com/customsearch/v1?key='+phenny.config.cse_apikey+'&cx='+phenny.config.cse_appid+'&q='+term)
     try:
         r = json.loads(request.text)
-        return phenny.say(r['items'][0]['link'])
+        return phenny.say(r['items'][0]['link'] + ' - ' + r['items'][0]['title'])
     except KeyError:
         return phenny.say('error')
 
