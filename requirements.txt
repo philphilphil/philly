@@ -1,9 +1,14 @@
-requests
-wolframalpha
+# Module dependencies
+# chat.py
+apiai
+# backlog.py
 numpy
 scipy
 networkx
 summa
 sumy
 nltk
-apiai
+# search.py
+requests
+# wa.py
+wolframalpha
