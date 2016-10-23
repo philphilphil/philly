@@ -101,7 +101,13 @@ def create_default_config(fn):
         'token_secret': ''
         }
 
+    # api.ai https://docs.api.ai/docs/get-started
+
     # apiai_apikey = ''
+
+    # google custom search
+    # https://developers.google.com/custom-search/
+    # http://stackoverflow.com/a/5615931
 
     # cse_apikey = ''
     # cse_appid = ''
