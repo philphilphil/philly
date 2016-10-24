@@ -10,8 +10,12 @@ For Sumy:
 `python -c "import nltk; nltk.download('punkt')"`
 """
 
-# Summa
-import summa
+# Summa (Currently only works with python2.7)
+from sys import modules
+try:
+    import summa
+except ImportError:
+    pass
 
 # Sumy
 from sumy.parsers.plaintext import PlaintextParser
@@ -49,6 +53,13 @@ def backlog_summa(jenni, input):
     """Parses the backlog of the current channel and creates a summary with summa"""
     backlog_length = 1000
     summary_length = 8
+
+    # Use sumy if summa is not available
+    try:
+        module = modules["summa"]
+    except KeyError:
+        backlog_sumy(jenni, input)
+        return
 
     channel = input.sender
     nick = input.nick
@@ -88,7 +99,7 @@ backlog_summa.priority = "high"
 def backlog_sumy(jenni, input):
     """Parses the backlog of the current channel and creates a summary with sumy"""
     backlog_length = 100
-    summary_length = 5
+    summary_length = 8
     summarize_type = "sum-basic"
 
     channel = input.sender

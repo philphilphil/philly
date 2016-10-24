@@ -8,17 +8,13 @@ jenni.backlog(filter_channel, max_lines)
 
 import os, re
 import threading
-from modules import unicode as uc
-
 
 # Backlog utils
 def update_backlog(self, input):
     """Write every received line to a backlog file"""
-    channel = uc.encode(uc.decode(input.sender))
-    nick = (input.nick).encode("utf-8")
+    channel = input.sender
+    nick = input.nick
     line = input.group()
-    if type(line) != type(str()):
-        line = uc.encode(line)
 
     # Rules for lines that should be excluded
     if not channel.startswith("#"):
