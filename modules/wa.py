@@ -6,8 +6,12 @@ def wa(phenny, input):
 
     client = wolframalpha.Client(phenny.config.wolframalpha_apikey)
 
-    request = client.query(input.group(2))
-    phenny.say(next(request.results).text)
+    # sorry!
+    try:
+        request = client.query(input.group(2))
+        phenny.say(next(request.results).text)
+    except AttributeError:
+        phenny.say('Error')
 
 wa.commands = [ 'wa', 'wolfram', 'wolframalpha' ]
 wa.priority = 'high'
