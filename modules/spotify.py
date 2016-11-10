@@ -29,8 +29,7 @@ import json
 import sys
 from datetime import timedelta
 
-from modules import proxy
-
+import requests
 
 class NotModifiedError(Exception):
     def __init__(self):
@@ -88,19 +87,16 @@ API_ENDPOINT = "/v1"
 def lookup(typ, objid):
     url = "https://%s%s/%ss/%s" % (API_URL, API_ENDPOINT, typ, objid)
 
-    success, response = proxy.get_more(url)
-
-    if not success:
-        raise Exception("Unable to connect to proxy: {0}".format(response))
-
-    if response['code'] == 200:
-        result = json.loads(response['read'])
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        result = json.loads(response.text)
         return result
 
     try:
-        raise SpotifyStatusCodes[response['code']]
+        raise SpotifyStatusCodes[response.status_code]
     except KeyError as ValueError:
-        raise Exception("HTTP Error {0}".format(response['code']))
+        raise Exception("HTTP Error {0}".format(response.status_code))
 
 
 def notify(jenni, recipient, text):
@@ -144,11 +140,11 @@ def print_track(jenni, track):
         message_format = TRACK_MSG
 
     message = message_format.format(
-        "\x02",
-        track['name'].encode('utf-8'),
-        length,
-        artists.encode('utf-8'),
-        track['album']['name'].encode('utf-8')
+            '\x02',
+            track['name'],
+            length,
+            artists,
+            track['album']['name']
     )
 
     jenni.say(message)
