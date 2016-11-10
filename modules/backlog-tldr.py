@@ -51,7 +51,7 @@ def setup(self):
 # Summa
 def backlog_summa(jenni, input):
     """Parses the backlog of the current channel and creates a summary with summa"""
-    backlog_length = 1000
+    backlog_length = 500
     summary_length = 8
 
     # Use sumy if summa is not available
@@ -98,7 +98,7 @@ backlog_summa.priority = "high"
 # Sumy
 def backlog_sumy(jenni, input):
     """Parses the backlog of the current channel and creates a summary with sumy"""
-    backlog_length = 100
+    backlog_length = 500
     summary_length = 8
     summarize_type = "sum-basic"
 
@@ -111,7 +111,6 @@ def backlog_sumy(jenni, input):
         summary_length = int(cmds[2])
     if len(cmds) > 3:
         summarize_type = cmds[3]
-        jenni.say(summarize_type)
 
     # Backlog is only logged for channels
     if not channel.startswith("#"):
@@ -132,7 +131,7 @@ def backlog_sumy(jenni, input):
     else:
         summarizer.stop_words = get_stop_words(LANGUAGE)
 
-    jenni.say("Summary:")
+    jenni.say("Summary ({}):".format(summarize_type))
     for sentence in summarizer(parser.document, summary_length):
         jenni.say(str(sentence))
 
