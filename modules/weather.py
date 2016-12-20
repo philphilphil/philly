@@ -13,7 +13,8 @@ def weather(phenny, input):
         parse = json.loads(req.text)
         temp = parse['main']['temp']
         k2c = temp-273.15
-        phenny.say(parse['name'] + ', ' + parse['sys']['country'] + ' - Conditions: ' + parse['weather'][0]['description'] + ' - Temperature: ' + str(round(k2c, 2)) +' °C')
+        k2f = temp*9/5-459.67
+        phenny.say(parse['name'] + ', ' + parse['sys']['country'] + ' - Conditions: ' + parse['weather'][0]['description'] + ' - Temperature: ' + str(round(k2c, 2)) +' °C | ' + str(round(k2f, 2)) + ' °F | ' + str(round(temp, 2)) + ' °K')
     except:
         phenny.say('Error')
 
