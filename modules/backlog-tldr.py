@@ -124,7 +124,7 @@ def backlog_sumy(jenni, input):
     stemmer = Stemmer(LANGUAGE)
 
     # Allow selection of summarizer
-    summarizer_class = next(cls for name, cls in AVAILABLE_METHODS.items() if summarize_type)
+    summarizer_class = next(cls for name, cls in AVAILABLE_METHODS.items() if summarize_type == name)
     summarizer = summarizer_class(stemmer)
     if summarizer_class is EdmundsonSummarizer:
         summarizer.null_words = get_stop_words(LANGUAGE)
